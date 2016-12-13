@@ -70,7 +70,12 @@ class Customer extends Person{
         this.name = name;
     }
 
-    // need something here
+    @Override
+    void work() {
+
+    }
+
+
 }
 
 
@@ -82,8 +87,16 @@ class Manager extends Person{
     }
 
     void sort(){ // 직접 소팅 알고리즘을 이용하여 코딩해야함. 자바 기본 정렬 메소드 이용시 감
-
-        // need something here
+        for(int i=0;i<9;i++){
+            for(int j=0;j<10-i-2;j++){
+                if(list.get(j).spent_money>list.get(j+1).spent_money){
+                    Customer temp1 =list.get(j);
+                    Customer temp2 =list.get(j+1);
+                    list.set(j,temp2);
+                    list.set(j+1,temp1);
+                }
+            }
+        }
 
     }
 

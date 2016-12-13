@@ -11,12 +11,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     MyBaseAdapter adapter;
     ListView listview;
+    ArrayList<Employee> emp_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // need something here
+        emp_list = new ArrayList<Employee>();
 
         adapter = new MyBaseAdapter(this, emp_list);
         listview = (ListView) findViewById(R.id.listView1) ;
@@ -33,23 +35,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()){
             case R.id.btn_inc:
-                // need something here
+                int a=Integer.valueOf(edit_salary.getText().toString());
+                a+=10000;
+                edit_salary.setText(String.valueOf(a));
                 break;
 
             case R.id.btn_dec:
-                // need something here
+                int b=Integer.valueOf(edit_salary.getText().toString());
+                b-=10000;
+                edit_salary.setText(String.valueOf(b));
                 break;
 
             case R.id.btn_store:
-                // need something here
+                String name = edit_name.getText().toString();
+                int age =Integer.valueOf(edit_age.getText().toString());
+                int salary =Integer.valueOf(edit_salary.getText().toString());
+                employee = new Employee(name,age,salary);
+                emp_list.add(employee);
                 break;
 
             case R.id.btn_modify:
-                // need something here
+
                 break;
 
             case R.id.btn_delete:
-                // need something here
+                emp_list.remove(emp_list.size()-1);
                 break;
         }
     }
